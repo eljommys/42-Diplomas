@@ -62,7 +62,7 @@ contract ft_diploma is ERC721, Ownable {
         address to,
         uint256 tokenId
     ) public virtual override {
-        //solhint-disable-next-line max-line-length
+        require(_msgSender == owner, "Error: Only owner can execute this!");
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
 
         _transfer(from, to, tokenId);
